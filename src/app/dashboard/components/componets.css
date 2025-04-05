@@ -1,0 +1,14 @@
+.stories {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .stories::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .stories {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }

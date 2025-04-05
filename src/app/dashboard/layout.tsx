@@ -75,15 +75,14 @@ export default function DashboardLayout({
                     <SideBarNav menus = {menus} />
                 </div>
 
-
-
-                <div className="col-span-12 md:col-span-10">
+                
+                
+                <div className="col-span-12 md:col-span-11 xl:col-span-10">
+                    
                     <div className="hidden md:block">
-                        
                          {children}
                     </div>
-{/* 
-                    //sm navbar handle */}
+
                     <div className="col-span-12 block md:hidden">
                          <SideBarNavSmall menus = {menus} children = {children}/>
                     </div>
