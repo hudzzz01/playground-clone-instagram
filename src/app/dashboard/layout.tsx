@@ -71,8 +71,11 @@ export default function DashboardLayout({
     return (
         <div>
             <div className="grid grid-cols-12 h-screen">
-                <div className="col-span-1 xl:col-span-2 border border-gray-200 hidden md:block">
-                    <SideBarNav menus = {menus} />
+                <div className="col-span-1 xl:col-span-2 border border-gray-200 hidden md:block ">
+                    <div className="fixed">
+                         <SideBarNav menus = {menus} />
+
+                    </div>
                 </div>
 
                 

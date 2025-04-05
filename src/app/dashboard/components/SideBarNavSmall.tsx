@@ -8,6 +8,8 @@ export default function SideBarNavSmall(props: any) {
     return (
         <div>
             <div className=' h-12 flex flex-row gap-0 justify-around items-center'>
+                <div className=' h-12 flex flex-row gap-0 justify-around items-center fixed bg-white w-full'>
+
                 {menus.map((menu: any, idx: number) => (
                     <div key={idx} className='' >
                         {idx == 0 &&
@@ -29,6 +31,9 @@ export default function SideBarNavSmall(props: any) {
 
 
                 ))}
+
+                </div>
+              
 
             </div>
             {children}
