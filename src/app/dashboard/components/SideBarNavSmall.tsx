@@ -32,7 +32,7 @@ export default function SideBarNavSmall(props: any) {
 
             </div>
             {children}
-            <div className='absolute bottom-0'>
+            <div className='fixed bg-white w-full bottom-0'>
 
                 <div className=' h-12 flex flex-row justify-between w-full items-center ' >
 

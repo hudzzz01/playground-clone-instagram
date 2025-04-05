@@ -54,6 +54,12 @@ export default function Stories() {
         id: 10,
         name: "ayunda",
         image: "/ayunda2.jpeg"
+    },
+    ,
+    {
+        id: 10,
+        name: "ayunda",
+        image: "/ayunda2.jpeg"
     }
     ]
 
@@ -76,8 +82,8 @@ export default function Stories() {
 
     return (
         <div className=''>
-            <div className='relative right-0 top-20 align-center' onClick={() => scroll("left")}> <span className='rounded-full px-2 text-gray-500 hover:text-gray-800'> <FontAwesomeIcon size="xl" icon={faBackward} /> </span></div>
-            <div className='relative left-9/10 top-14 ps-2 align-center' onClick={() => scroll("right")}> <span className='rounded-full px-2 text-gray-500 hover:text-gray-800' ><FontAwesomeIcon size="xl" icon={faForward} /> </span> </div>
+            <div className='relative right-0 top-20 align-center' onClick={() => scroll("left")}> <span className='rounded-full   px-2 text-gray-500 hover:text-gray-800'> <FontAwesomeIcon size="xl" icon={faBackward} /> </span></div>
+            <div className='relative w-10 left-9/10 top-14 ps-2 align-center' onClick={() => scroll("right")}> <span className='rounded  -full px-2 text-gray-500 hover:text-gray-800' ><FontAwesomeIcon size="xl" icon={faForward} /> </span> </div>
 
             <div className='ms-10'>
 

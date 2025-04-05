@@ -1,14 +1,12 @@
 "use client"
+import LinkFooter from '@/app/dashboard/components/LinkFooter'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
 export default function LoginPage() {
   const router = useRouter()
-  const linkFooter = `Meta,About,Blog,Jobs,Help,API,Privacy,Terms,Locations,Instagram Lite,Threads,Contact Uploading & Non-Users,Meta Verified,Meta in Indonesia`
-    .split(",")
 
-  // console.log(linkFooter);
   const [email, setEmail] = React.useState("")
   const [password, setPassword] = React.useState("")
 
@@ -92,14 +90,12 @@ export default function LoginPage() {
       </div>
       <div className=' grid grid-cols-12 gap-4 w-screen justify-center h-1/10'>
         <div className='col-span-12'>
-          <div className='flex flex-row flex-wrap gap-2 justify-center text-gray-500'>
-          {linkFooter.map((text,idx) => (
-            <div key={idx} className='text-center'> <p> {text} </p> </div>
-          ))}
+          <div className='w-ful flex justify-center'>
+          <LinkFooter/>
           </div>
          
         </div>
-        <div className='mb-10 col-span-12 flex justify-center text-gray-500'>
+        <div className='mb-10 col-span-12 flex justify-center text-gray-400'>
           <div>
             English 
           </div>

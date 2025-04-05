@@ -47,7 +47,7 @@ export default function DashboardLayout({
 
         {
             name: "Profile",
-            icon: <FontAwesomeIcon size="xl" icon={faUser} />
+            icon:  <Image style={{ objectFit: 'cover' }} alt='avatar' width={500} height={500} className=' w-10 h-10 rounded-full bg-white p-1' src='/ayunda2.jpeg' />
         },
 
         {
