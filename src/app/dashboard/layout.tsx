@@ -13,56 +13,68 @@ export default function DashboardLayout({
     const menus = [
         {
             name: <Image alt='instagram-text' width={1000} height={1000} className=' w-32 px-3' src='/instagram-text-dark.png' />,
-            icon: <FontAwesomeIcon size="xl" icon={faInstagram} />
+            icon: <FontAwesomeIcon size="xl" icon={faInstagram} />,
+                url : "/"
         },
         {
             name: "Home",
-            icon: <FontAwesomeIcon size="xl" icon={faHouse} />
+            icon: <FontAwesomeIcon size="xl" icon={faHouse} />,
+                 url : "/dashboard"
         },
         {
             name: "Search",
-            icon: <FontAwesomeIcon size="xl" icon={faMagnifyingGlass} />
+            icon: <FontAwesomeIcon size="xl" icon={faMagnifyingGlass} />,
+                 url : "/"
         },
         {
             name: "Explore",
-            icon: <FontAwesomeIcon size="xl" icon={faCompass} />
+            icon: <FontAwesomeIcon size="xl" icon={faCompass} />,
+                 url : "/"
         },
         {
             name: "Reels",
-            icon: <FontAwesomeIcon size="xl" icon={faFilm} />
+            icon: <FontAwesomeIcon size="xl" icon={faFilm} />,
+                 url : "/"
         },
         {
             name: "Message",
-            icon: <FontAwesomeIcon size="xl" icon={faFacebookMessenger} />
+            icon: <FontAwesomeIcon size="xl" icon={faFacebookMessenger} />,
+                 url : "/"
         },
         {
             name: "Notifications",
-            icon: <FontAwesomeIcon size="xl" icon={faHeart} />
+            icon: <FontAwesomeIcon size="xl" icon={faHeart} />,
+                 url : "/"
         },
 
         {
             name: "Create",
-            icon: <FontAwesomeIcon size="xl" icon={faSquarePlus} />
+            icon: <FontAwesomeIcon size="xl" icon={faSquarePlus} />,
+                 url : "/"
         },
 
         {
             name: "Profile",
-            icon:  <Image style={{ objectFit: 'cover' }} alt='avatar' width={500} height={500} className=' w-10 h-10 rounded-full bg-white p-1' src='/ayunda2.jpeg' />
+            icon:  <Image style={{ objectFit: 'cover' }} alt='avatar' width={500} height={500} className=' w-10 h-10 rounded-full bg-white p-1' src='/ayunda2.jpeg' />,
+                 url : "/dashboard/profile"
         },
 
         {
             name: "AI Studio",
-            icon: <FontAwesomeIcon size="xl" icon={faGhost} />
+            icon: <FontAwesomeIcon size="xl" icon={faGhost} />,
+                 url : "/"
         },
 
         {
             name: "Threads",
-            icon: <FontAwesomeIcon size="xl" icon={faThreads} />
+            icon: <FontAwesomeIcon size="xl" icon={faThreads} />,
+                 url : "/"
         },
 
         {
             name: "More",
-            icon: <FontAwesomeIcon size="xl" icon={faList} />
+            icon: <FontAwesomeIcon size="xl" icon={faList} />,
+                 url : "/"
         },
 
 
