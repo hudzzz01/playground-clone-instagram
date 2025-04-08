@@ -2,8 +2,10 @@ import React from 'react'
 
 import Image from 'next/image'
 import Button1 from '../components/Button1'
-import { BsGearWide } from 'react-icons/bs'
+import { BsGearWide, BsGrid3X3GapFill } from 'react-icons/bs'
 import StoryAvatar from '../components/StoryAvatar'
+import { MdOutlineMovie, MdOutlinePersonPin } from 'react-icons/md'
+import LinkFooter from '../components/LinkFooter'
 
 export default function ProfilePage() {
   return (
@@ -44,6 +46,38 @@ export default function ProfilePage() {
             <div className='col-span-12'>
               <hr className='mx-4 rounded text-gray-300' />
             </div>
+
+            <div className='col-span-12'>
+              {/* section list imagye */}
+              <div className='flex flex-row flex-wrap gap-5 px-5 md:px-5 xl:px-10  justify-center'>
+                <div className='flex flex-col text-center justify-center align-center hover:bg-gray-100 rounded p-2 ' >
+                <hr className='relative bottom-2'/>
+                  <BsGrid3X3GapFill className='ms-3' />
+                  <p>POSTS</p>           </div>
+                <div className='flex flex-col text-center justify-center align-center hover:bg-gray-100 rounded p-2 ' >
+               <hr className='relative bottom-2'/>
+                  <MdOutlineMovie className='ms-3' />
+                  <p>REELS</p>           </div>
+                <div className='flex flex-col text-center justify-center align-center hover:bg-gray-100 rounded p-2 ' >
+              <hr className='relative bottom-2'/>
+                <MdOutlinePersonPin className='ms-4' />
+                  <p>TAGGED</p>
+                </div>
+              </div>
+              <div className='flex flex-row flex-wrap gap-2 justify-center'>
+
+                    <Image style={{ objectFit: 'cover' }} alt='avatar' width={500} height={500} className={` w-3/10`} src={'/ayunda2.jpeg'} /> 
+                    <Image style={{ objectFit: 'cover' }} alt='avatar' width={500} height={500} className={` w-3/10`} src={'/ayunda2.jpeg'} /> 
+                    <Image style={{ objectFit: 'cover' }} alt='avatar' width={500} height={500} className={` w-3/10`} src={'/ayunda2.jpeg'} /> 
+                    <Image style={{ objectFit: 'cover' }} alt='avatar' width={500} height={500} className={` w-3/10`} src={'/ayunda2.jpeg'} /> 
+                    <Image style={{ objectFit: 'cover' }} alt='avatar' width={500} height={500} className={` w-3/10`} src={'/ayunda2.jpeg'} /> 
+                    <Image style={{ objectFit: 'cover' }} alt='avatar' width={500} height={500} className={` w-3/10`} src={'/ayunda2.jpeg'} /> 
+          
+              </div>
+              <div className=' flex flex-col justify-center mt-2 text center'>
+                 <LinkFooter/>
+              </div>
+             </div>
           </div>
 
         </div>
