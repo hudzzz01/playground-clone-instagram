@@ -69,13 +69,13 @@ export default function DashboardLayout({
         {
             name: "Notifications",
             icon: <FontAwesomeIcon size="xl" icon={faHeart} />,
-                 url : "/"
+                 url : "/dashboard/profile/post/add"
         },
 
         {
             name: "Create",
             icon: <FontAwesomeIcon size="xl" icon={faSquarePlus} />,
-                 url : "/"
+                 url : "/dashboard/profile/post/add"
         },
 
         {
