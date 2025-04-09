@@ -3,6 +3,7 @@ import ProfileCard from '../components/ProfileCard'
 import StoryAvatar from '../components/StoryAvatar'
 import Stories from '../components/Stories'
 import Image from 'next/image';
+import ChatContainer from '../components/ChatContainter/ChatContainer';
 
 export default function MessagePage() {
   return (
@@ -113,7 +114,10 @@ export default function MessagePage() {
 
                 </div>
             </div>
-            <div className='w-10/10 bg-green-100 h-screen '></div>       
+            {/* message section */}
+            <div className='w-10/10 bg-green-100 h-screen'>
+                    <ChatContainer/>
+            </div>       
         </div>
     </div>
   )
