@@ -1,15 +1,40 @@
+"use client"
 import SideBarNav from "./components/SideBarNav";
 import { faAirbnb, faFacebookMessenger, faInstagram, faInternetExplorer, faThreads } from '@fortawesome/free-brands-svg-icons'
 import { faCoffee, faCompass, faFilm, faGhost, faHeart, faHouse, faList, faMagnifyingGlass, faSquare, faSquarePlus, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
 import SideBarNavSmall from "./components/SideBarNavSmall";
+import { usePathname } from "next/navigation";
+import React, { useEffect } from "react";
+import path from "path";
+
+
 
 export default function DashboardLayout({
     children
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+
+
+
+    const [isDirect,setIsDirect] = React.useState(false)
+
+    const pathName = usePathname();
+    useEffect(() => {
+        if(pathName.includes("direct")) {
+            setIsDirect(true)
+        }else{
+            setIsDirect(false)
+        }
+        console.log(pathName);
+        
+    },[pathName])
+   
+
+    
+
     const menus = [
         {
             name: <Image alt='instagram-text' width={1000} height={1000} className=' w-32 px-3' src='/instagram-text-dark.png' />,
@@ -39,7 +64,7 @@ export default function DashboardLayout({
         {
             name: "Message",
             icon: <FontAwesomeIcon size="xl" icon={faFacebookMessenger} />,
-                 url : "/"
+                 url : "/dashboard/direct"
         },
         {
             name: "Notifications",
@@ -83,9 +108,9 @@ export default function DashboardLayout({
     return (
         <div>
             <div className="grid grid-cols-12 h-screen">
-                <div className="col-span-1 xl:col-span-2 border border-gray-200 hidden md:block ">
+                <div className={  `col-span-1 border border-gray-200 hidden md:block ${isDirect ? "xl:col-span-1" : "xl:col-span-2"}`}>
                     <div className="fixed">
-                         <SideBarNav menus = {menus} />
+                         <SideBarNav menus = {menus} isDirect = {isDirect}/>
 
                     </div>
                 </div>
