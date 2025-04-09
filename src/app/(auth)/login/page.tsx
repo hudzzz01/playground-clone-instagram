@@ -16,7 +16,30 @@ export default function LoginPage() {
     const email : string = e.currentTarget.email.value
     const password : string = e.currentTarget.password.value
 
-    console.log(email, password);
+    fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email,
+        password
+      })
+    })
+    .then(async (res) => {
+      if (res.status === 200) {
+        const data = await res.json(); 
+        console.log("Login sukses:", data);
+        router.push("/dashboard");
+      } else {
+        const error = await res.json();
+        console.error("Login gagal:", error.message || "Unknown error");
+      }
+    })
+    .catch((err) => {
+      console.error("Network error:", err);
+    });
+    
     
   }
 
