@@ -1,6 +1,8 @@
 // app/api/[[...slugs]]/route.ts
 import { Elysia, t } from 'elysia'
+
 import AuthController from './controller/AuthController'
+import { prisma } from '@/app/lib/prisma'
 
 const app = new Elysia({ prefix: '/api' })
     .get('/', () => 'hello Next')
@@ -10,7 +12,16 @@ const app = new Elysia({ prefix: '/api' })
         return res
         
     })
-    .get('/login', () => {
+    .get('/login', async () => {
+
+        const user = await prisma.user.findUnique({
+            where: { email : "admin@admin.com" }
+          });
+
+        console.log(user);
+        
+
+
         return {
           message: 'Hello from login route!',
           success: true

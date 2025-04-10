@@ -3,44 +3,63 @@ import LinkFooter from '@/app/dashboard/components/LinkFooter'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { setLoading } from '@/app/redux/slice/loadingSlice'
+
+
 
 export default function LoginPage() {
+
   const router = useRouter()
+  const loadingRedux = useSelector((state: any) => state.loading.loading)
+  const dispatch = useDispatch()
 
   const [email, setEmail] = React.useState("")
   const [password, setPassword] = React.useState("")
 
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault()
-    const email : string = e.currentTarget.email.value
-    const password : string = e.currentTarget.password.value
+    const email: string = e.currentTarget.email.value
+    const password: string = e.currentTarget.password.value
 
-    fetch("/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email,
-        password
-      })
-    })
-    .then(async (res) => {
+    try {
+      dispatch(setLoading({
+        isLoading: true,
+        message: "loading sign in"
+      }))
+
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email,
+          password
+        })
+      });
+
       if (res.status === 200) {
-        const data = await res.json(); 
+        const data = await res.json();
         console.log("Login sukses:", data);
         router.push("/dashboard");
       } else {
         const error = await res.json();
         console.error("Login gagal:", error.message || "Unknown error");
       }
-    })
-    .catch((err) => {
+    } catch (err) {
       console.error("Network error:", err);
-    });
-    
-    
+    }
+    finally {
+      dispatch(setLoading({
+        isLoading: false,
+        message: ""
+      }))
+    }
+
+
+
   }
 
   const handleClickSignUp = () => {
@@ -53,13 +72,14 @@ export default function LoginPage() {
 
   return (
     <div className='h-screen'>
+      {loadingRedux.isLoading && <h1>LOADINGG</h1>}
       <div className='grid grid-cols-12 gap-4 h-9/10'>
         <div className='col-span-12 hidden md:flex md:col-span-7 bg-white' >
           {/* kiri */}
           <div className='flex w-full '>
             <div className='flex flex-row justify-end items-center w-full'>
               {/* thumbler */}
-              <Image className='rounded-xl px-10' unoptimized = {false} src="/cover-jumbo.webp" alt="Vercel Logo" width={800} height={1000} />
+              <Image className='rounded-xl px-10' unoptimized={false} src="/cover-jumbo.webp" alt="Vercel Logo" width={800} height={1000} />
             </div>
           </div>
 
@@ -71,7 +91,7 @@ export default function LoginPage() {
               <div className=''>
                 <Image alt='instagram-text' width={1000} height={1000} className=' w-full h-15' src='/instagram-text-dark.png' />
               </div>
-              <form onSubmit={(e)=> handleSubmit(e)} className='flex flex-col gap-5 mt-10'>
+              <form onSubmit={(e) => handleSubmit(e)} className='flex flex-col gap-5 mt-10'>
                 <div className='flex flex-col gap-3'>
                   <input name='email' placeholder='Phone number, username, or email' value={email} onChange={(e) => setEmail(e.target.value)} className=' rounded-sm w-70 h-10 bg-gray-100 px-3' type="text" />
                   <input name='password' placeholder='Password' className=' rounded-sm w-70 h-10 bg-gray-100 px-3' onChange={(e) => setPassword(e.target.value)} value={password} type="password" />
@@ -114,20 +134,20 @@ export default function LoginPage() {
       <div className=' grid grid-cols-12 gap-4 w-screen justify-center h-1/10'>
         <div className='col-span-12'>
           <div className='w-ful flex justify-center'>
-          <LinkFooter/>
+            <LinkFooter />
           </div>
-         
+
         </div>
         <div className='mb-10 col-span-12 flex justify-center text-gray-400'>
           <div>
-            English 
+            English
           </div>
           <div className=''>
-          © 2025 Hudzaifah Assyahid
+            © 2025 Hudzaifah Assyahid
           </div>
         </div>
       </div>
-  
+
 
     </div>
 

@@ -1,5 +1,5 @@
 const AuthController = {
-    login: (body,set) => {
+    login: (body:any,set:any) => {
         console.log(body);
         
         if(body.email === "admin@admin.com" && body.password === "admin"){
