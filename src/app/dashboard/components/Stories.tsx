@@ -82,9 +82,12 @@ export default function Stories() {
 
     return (
         <div className=''>
-            <div className='relative right-0 top-20 align-center' onClick={() => scroll("left")}> <span className='rounded-full   px-2 text-gray-500 hover:text-gray-800'> <FontAwesomeIcon size="xl" icon={faBackward} /> </span></div>
-            <div className='relative w-10 left-9/10 top-14 ps-2 align-center' onClick={() => scroll("right")}> <span className='rounded  -full px-2 text-gray-500 hover:text-gray-800' ><FontAwesomeIcon size="xl" icon={faForward} /> </span> </div>
+            <div className='relative top-10 px-3 z-10'>
 
+             <div className=' opacity-50 relative right-0 top-20 align-center' onClick={() => scroll("left")}> <span className='bg-black  rounded-full   px-2 text-gray-500 hover:text-gray-800'> <FontAwesomeIcon size="xl" icon={faBackward} /> </span></div>
+              <div className='opacity-50 relative w-10 left-9/10 top-14 ps-2 align-center' onClick={() => scroll("right")}> <span className='bg-black  rounded-full px-2 text-gray-500 hover:text-gray-800' ><FontAwesomeIcon size="xl" icon={faForward} /> </span> </div>
+
+            </div>
             <div className='ms-10'>
 
                 <div ref={scrollRef} className='stories w-9/10 h-33 flex'>

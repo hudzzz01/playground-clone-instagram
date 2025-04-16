@@ -5,21 +5,29 @@ import { useRouter } from 'next/navigation'
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setLoading } from '@/app/redux/slice/loadingSlice'
+import LoadingInstagram from '@/app/dashboard/components/Loadings/LoadingInstagram'
+import BasicLoading from '@/app/dashboard/components/Loadings/BasicLoading'
 
 
 
 export default function LoginPage() {
 
   const router = useRouter()
-  const loadingRedux = useSelector((state: any) => state.loading.loading)
+  const loadingRedux = useSelector((state: any) => state.loading.loading.isLoading)
   const dispatch = useDispatch()
 
   const [email, setEmail] = React.useState("")
   const [password, setPassword] = React.useState("")
+  const [error, setError] = React.useState({
+    isError : false,
+    message : "",
+  })
 
 
   const handleSubmit = async (e: any) => {
     e.preventDefault()
+    console.log(loadingRedux);
+    
     const email: string = e.currentTarget.email.value
     const password: string = e.currentTarget.password.value
 
@@ -46,15 +54,27 @@ export default function LoginPage() {
         router.push("/dashboard");
       } else {
         const error = await res.json();
-        console.error("Login gagal:", error.message || "Unknown error");
+        console.log("Login gagal:", error.message || "Unknown error");
+        setError({
+          isError : true,
+          message : error.message
+        })
+        console.log(error);
+        
       }
     } catch (err) {
+      setError({
+        isError : true,
+        message : "network error"
+      })
       console.error("Network error:", err);
     }
     finally {
+      console.log(loadingRedux);
+      
       dispatch(setLoading({
         isLoading: false,
-        message: ""
+        message: "loading sign in"
       }))
     }
 
@@ -72,7 +92,7 @@ export default function LoginPage() {
 
   return (
     <div className='h-screen'>
-      {loadingRedux.isLoading && <h1>LOADINGG</h1>}
+      {loadingRedux.isLoading ? <BasicLoading/> : <></>}
       <div className='grid grid-cols-12 gap-4 h-9/10'>
         <div className='col-span-12 hidden md:flex md:col-span-7 bg-white' >
           {/* kiri */}
@@ -91,8 +111,16 @@ export default function LoginPage() {
               <div className=''>
                 <Image alt='instagram-text' width={1000} height={1000} className=' w-full h-15' src='/instagram-text-dark.png' />
               </div>
+            
               <form onSubmit={(e) => handleSubmit(e)} className='flex flex-col gap-5 mt-10'>
+                
                 <div className='flex flex-col gap-3'>
+               
+                  {error.isError && 
+                     <div className='text-center h-8 '>
+                       <p className='text-red-500'>{error.message}</p>
+                    </div>
+                  }
                   <input name='email' placeholder='Phone number, username, or email' value={email} onChange={(e) => setEmail(e.target.value)} className=' rounded-sm w-70 h-10 bg-gray-100 px-3' type="text" />
                   <input name='password' placeholder='Password' className=' rounded-sm w-70 h-10 bg-gray-100 px-3' onChange={(e) => setPassword(e.target.value)} value={password} type="password" />
                 </div>
